@@ -1,13 +1,26 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+<html lang="zh-CN">
+    <!-- title -->
 
-  
-  <title>jyx&#39;s personal blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Hungry&amp;Humble">
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="John Doe">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="John Doe">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="Hungry&Humble">
+    <meta name="description" content="Hungry&amp;Humble">
 <meta property="og:type" content="website">
 <meta property="og:title" content="jyx&#39;s personal blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
@@ -17,644 +30,1180 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jyx&#39;s personal blog">
 <meta name="twitter:description" content="Hungry&amp;Humble">
-  
-    <link rel="alternate" href="/atom.xml" title="jyx&#39;s personal blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    
+    <title>fi3ework&#39;s Studio</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
 </head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">jyx&#39;s personal blog</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">主页</a>
-        
-          <a class="main-nav-link" href="/archives">所有文章</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
+    
+        <body class="home-body">
+    
+    
+<header class="header index-header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <a class="home-link" href=/>fi3ework's Studio.</a>
 </header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-信用证与贸易融资" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/27/信用证与贸易融资/" class="article-date">
-  <time datetime="2020-10-27T03:12:30.720Z" itemprop="datePublished">2020-10-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/审计物语/">审计物语</a>
-  </div>
+    <div class="wrapper">
+        <div class="site-intro" style="
 
-  </div>
-  <div class="article-inner">
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
     
     
-      <header class="article-header">
+    <!-- 文章页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/index-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            fi3ework's Studio.
+            <!-- 文章页  -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+                it's better to burn out than to fade away
+            
+            <!-- 文章页  -->
+            
+        </p>
+        <!-- 文章页meta -->
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/27/信用证与贸易融资/">信用证与贸易融资</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>信用证——贸易融资的方式之一<br>贸易融资的主要方式有：开立国际信用证、开立国内信用证、进口押汇、提货担保、 打包贷款、出口押汇、信用证项下出口贴现、国内信用证买方押汇、国内信用证卖方押汇、 国内信用证议付及其他国际、国内贸易融资业务等等等等<br>可以看到，贸易融资与信用证关系密切。说到信用证融资，我们就不得不提一下华信了……<ul>
-<li><em>“上述人士介绍：“一个信用证融资周期通常为90天，更理想的是180天。下游企业在银行开立信用证，交20%以下的保证金甚至免交，银行先放款给上游，下游经过数月的销售期后回款给银行。华信的做法是通过关联公司循环套现，放大融资杠杆。”对于利用信用证循环套现进行贸易融资，叶简明解释,“国内设计了3个月、6个月的信用证，这套设计是存在问题的。从订货、到销售到回款，至少要一年，这就导致回款赶不上信用证的刚性到期，而2009年无论大宗商品还是房地产都在不断上涨，很多公司都把贸易当成了融资工具。”  华信的信用证贸易融资，其贸易对手大多是自己的关联公司和经济共同体企业，通过不断左手倒右手的做流水。这种做法常隐藏着虚假贸易、虚开增值税发票的操作。“很多时候，这种做法只是贸易单据的旅行，货物空转甚至根本没有实际货物。也就是说很可能一船货物停在港口一年都可以不动，但已经在关联公司间转手了几十上百次。”一位业内人士说。”</em>以上段落选自《华信能源董事局主席叶简明被调查 起底华信复杂政商关系网》，财新网季天琴。（不得不说这篇新闻调查写的真的很好，推荐大家自行搜索阅读XD）</li>
-</ul>
-</li>
-<li><p>信用证议付、押汇与贴现的区别（摘自网络）<br>在信用证项下：</p>
-<p>贴现出现在远期信用证中，主要指远期信用证下开立的远期承兑汇票的即期贴现，也就是说，虽然是远期信用证，但交单后你能马上全额拿到钱—当然，要支付银行手续费和利息（按总金额X利息率X远期汇票的天数）。</p>
-<p>押汇则一般是即期信用证，指的是交单银行（一般是国内银行了）后，在收回货款以前，银行先垫付货款给你—不是全部，通常最多80%，余款等收到外国银行转来的货款后才付清，并且扣掉银行手续费和利息（押汇金额X利息率X天数）。</p>
-<p>从操作上看二者区别：</p>
-<p>1.贴现用于远期信用证，押汇则一般是即期信用证；<br>2.贴现你能马上收到全额货款；押汇则一般只有80%，余款还要等。<br>3.二者的手续费很难比较高低，看运气，收款顺利的话，押汇相对便宜一点。<br>4.注意，二者中，拿到钱都并非万无一失，如果最后外商那边出事，银行收不到钱，那么先付给你的这笔钱银行是要追讨回来的（别指望赖掉，银行总比你狠），这就是“追索权”。但是贴现可以化解，就是做无追索权的贴现，手续费稍微高一点点，当然是首选，你拿钱去睡觉吧，剩下的事银行自己解决。而押汇则必有追索权。<br>5.习惯上，贴现一般由外国银行操作（国内当然也行，习惯问题）；押汇一般由国内银行，也就是你的交单银行来操作。<br>6 贴现比较容易办理；押汇则相对麻烦一点，一般银行要考量你的资质信用的。</p>
-</li>
-</ul>
-<p>   接下来简介原理：</p>
-<p>   贴现—-<br>   远期承兑汇票，等于是外商的欠条，承诺到期还款。银行贴现，等于是银行把你的债权买下来，银行成了债主，到时候银行问外商要钱。</p>
-<p>   外商欠你钱是不给利息的，银行买下债权则收取利息，可以赚一笔。这就是为什么银行乐于贴现的原因。我们则是损失一点小钱，但获得了及时的资金回笼。</p>
-<p>   所以，贴现某种意义上就是转让债权，三个关系方：你（原债主）、外商（欠债人）和银行（新债主）</p>
-<p>   押汇—-<br>   押汇跟外商无关，完全是你跟银行间的操作。信用证交单合乎要求，就能收到钱，但要等一段时间才到帐。你不想等，就以这份比较稳妥的信用证交单为抵押，向银行抵押贷款，所以只能贷到80%，还要付利息。所以，押汇某种意义上就是抵押贷款，两个关系方：你（贷款人）、银行（放贷人）</p>
-<p>   议付则是客户在备好信用证下相关单据后向银行要求付款的过程.只要单据齐全,即期信用证下,银行需立即支付货款.（与票据无关）</p>
-<ul>
-<li>信用证扩展阅读：《UCP600》、《UCP500》、《广东振戎黑洞》、《彻底搞懂信用证》</li>
-</ul>
-
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/10/27/信用证与贸易融资/" data-id="ckgrea3tq0004zguum4g150na" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
 
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
 
-  
-    <article id="post-戊戌中秋夜" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/27/戊戌中秋夜/" class="article-date">
-  <time datetime="2020-10-27T03:12:30.720Z" itemprop="datePublished">2020-10-27</time>
-</a>
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main index-page">
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/随笔/">随笔</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/27/戊戌中秋夜/">戊戌中秋夜</a>
-    </h1>
-  
-
-      </header>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2018年9月24日。这一天是中国传统的中秋佳节，这一天中美贸易战美国对中国的2000亿美元关税正式开征，这一天阿蒂亚爵士将给出黎曼猜想的证明。而对我而言，这一天还是爷爷的离开我们的日子。测试<br>爷爷名国均，生于1938年。爷爷的爷爷以前是个穷酸秀才，故而爷爷小时也念过几年私塾，颇识得几个字，还会看一手黄历，故而在村子里也有点名望。<br>文革那几年，由于太爷爷是地主的关系，爷爷被拉到村里的大会堂上批斗了几次。爸爸也因为是“地主孙”的关系，年年考第一却没有奖状，因为“出身不好”。那时候的农村是会放露天电影的，大家伙看电影的时候，身份不好的爷爷就总是在一旁摇放映机。或许是那几年的动乱与荒诞，爷爷说话变得谨言慎行。在他七十多岁时，患上了阿尔茨海默病，事也记不得多少清楚了。人们打趣问他“今年几岁”，他总是笑笑说，那总是知道的，不必说。小心翼翼地言语，别人是套不出什么把柄出来的。阿尔茨海默病使他忘记了身边的人，缺忘不了那些年养成的说话方式。<br>改革开放刚开始的时候，爷爷便开始出门做生意，也就是简单的倒买倒卖。那时候我还没出生，自我记事起，唯一知道的爷爷的生意就是全村唯一的小卖部。爷爷的家在全村的中心地方，小卖部便开在家中，卖些烟酒，也会进一些小零食与日用品。小时候的爷爷家总是很热闹，那时候村里的人也很多。大家到了晚上忙完农活，来小卖部买包烟，然后就在爷爷家里聊天。在那个有线电视还没入村的时候，爷爷进了许多影碟片，出租给村里的年轻人看。傍晚的时候，有时几个大后生也会让爷爷拿出几个影碟片来放给大家看。爷爷也喜欢热闹，便打开VCD。有时会听到村里的大后生让爷爷放一些“带劲、好看”的碟片，爷爷就凶他们，“我小孙子在这，你要看自己租回家放”。<br>小学放暑假的时候，我总会到爷爷家避暑。老人们总是喜欢小孩子的，而我作为爷爷唯一的孙子，尤其得到爷爷的偏爱。那时候我一到均山村，爷爷就会从小卖部里拿出来AD钙奶或者是辣条之类的零食给我，“哟，昕昕来了呀，想吃什么零食”。那时候村里其他的小孩都眼红我有个开小卖部的爷爷。<br>初中之后，爷爷年纪大了，总是记不清事，在加上早年酗酒，慢慢成了“酒精脑”。那时候，爷爷喝完酒总是会哼起他小时候私塾先生的教诲“读书需用意，一字值千金”之类的。还会让我们猜字谜，“左边三点水，中间白下方，反文右边落”。记不得自己年龄的爷爷，对于小时候背的东西却记忆犹新。到了我高中的时候，爷爷已经记不得什么东西了。认不出我，也认不出爸爸，倒是认得奶奶。再往后，对于奶奶也不是能够时常记得了，但还记得邻村的姑夫，姑夫离得近，经常带酒给老丈人喝。高中的时候回均山村，奶奶打趣得问爷爷我是谁，爷爷总说“那总是知道的，这都需要问吗”，但却说不上来我是谁。奶奶就骂爷爷，“你的大孙子都不认识啦”。那时候爷爷还是喜欢喝酒，喝完酒就拉我到一旁说，“年轻人，切记，读书需用意，一字值千金”，然后就让我猜字谜，那个“激”字我也猜了不下百变了。<br>大学之后，爷爷的记性更是一天不如一天。原来嗜酒如命的他甚至忘掉了酒的味道，尝了口爸爸带回来的茅台后，骂道“这啥玩意儿，呸，这么难喝”。这时爷爷倒喜欢上了营养快线，甜。上了年纪的爷爷，肌肉萎缩得厉害。当年全村力气数一数二，生产队中最能够干活的大后生，老了爬个楼梯也气喘得不行。<br>八月半那天的早上六点多的时候，我就接到了妈妈的电话，爷爷走了，我挂下电话后就匆忙从杭州赶回了均山村。之后便是繁琐的各种礼节。爸爸是爷爷唯一的儿子，我是爷爷唯一是孙子。爷爷上山那天，我走在前面捧着相片，爸爸和姑夫在后面担着爷爷。路上哀乐与哭声不绝。走在路上，我倒也没哭出来，但想必爸爸一定比我难受百倍。回到了家里之后，从外屋走到里屋，哀伤终是涌了上来。门口的这珠藤萝，我拔过的，还被爷爷骂了。家里正厅的躺椅，以前爷爷总坐这的。里屋进门的左手边，小时候总是会有很多影碟片，爷爷专门放这儿的。还有里屋书桌上的老黄历，爷爷总是能看黄历推出新年几时开年，推出哪天日子好，哪天日子不好。但爷爷终是没法推出自己上山那天的日子。戊戌年八月十六，一定是个好日子。<br>我从里屋走出，把素衣脱下。转身看到了门旁红底黑子的“戊戌安康”，红纸上面又盖了个白底黑子的“孝”。恍惚间不知怎的，想起了小时候一进门，爷爷就会拿出可乐来，笑着说“昕，你总算到了，喝健力宝不？”</p>
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/27/信用证与贸易融资/" >
+            
+                <span>信用证与贸易融资</span>
+        </a>
+        <div class="abstract-content">
+            
+信用证——贸易融资的方式之一贸易融资的主要方式有：开立国际信用证、开立国内信用证、进口押汇、提货担保、 打包贷款、出口押汇、信用证项下出口贴现、国内信用证买方押汇、国内信用证卖方押汇、 国内信用证议付及其他国际、国内贸易融资业务等等等等可以看到，贸易融资与信用证关系密切。说到信用证融资，我们就不得不提一下华信了……
+“上述人士介绍：“一个信用证融资周期通常为90天，更理想的是180天。下游企业在银行开立信用证，交20%以下的保证金甚至免交，银行先放款给上游，下游经过数月的销售期后回款给银行。华信的做法是通过关联公司循环套现，放大融资杠杆。”对于利用信用证循环套现进行贸易融资，叶简明解释...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/27</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/27/戊戌中秋夜/" >
+            
+                <span>戊戌中秋夜</span>
+        </a>
+        <div class="abstract-content">
+            2018年9月24日。这一天是中国传统的中秋佳节，这一天中美贸易战美国对中国的2000亿美元关税正式开征，这一天阿蒂亚爵士将给出黎曼猜想的证明。而对我而言，这一天还是爷爷的离开我们的日子。测试爷爷名国均，生于1938年。爷爷的爷爷以前是个穷酸秀才，故而爷爷小时也念过几年私塾，颇识得几个字，还会看一手黄历，故而在村子里也有点名望。文革那几年，由于太爷爷是地主的关系，爷爷被拉到村里的大会堂上批斗了几次。爸爸也因为是“地主孙”的关系，年年考第一却没有奖状，因为“出身不好”。那时候的农村是会放露天电影的，大家伙看电影的时候，身份不好的爷爷就总是在一旁摇放映机。或许是那几年的动乱与荒诞，爷爷说话变...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/27</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/27/新绛小记/" >
+            
+                <span>新绛小记</span>
+        </a>
+        <div class="abstract-content">
+            
+由于工作，我经常在全国各地出差。不妨就对各地风土人情做一个记录。
 
-      
+新绛位于山西省，是运城市下面的一个县，靠近河南。由于当初做的一家自来水公司的上市，其分公司在新绛，我便有机会去了这个西部地区的小县城。
+新绛城市规模不大，人口也就30来万。我对于这种规模的县城很感兴趣，因为我的老家龙泉市，也就是30来万人口的规模。去小县城就仿佛有一种回家的感觉。我往往喜欢将当地与我老家做一个对比。新绛与龙泉人口差不多，不过算人均GDP的话，只有龙泉的六成水平。但是，如果不查数据，只看当地的风貌的话，感觉还不到六成的水平。在当地转悠的时候，恍惚间好像回到了十多年前的龙泉，颇有点穿越的意味。
+我们住的酒店...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/27</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/27/月亮是夜晚的伤口/" >
+            
+                <span>月亮是夜晚的伤口</span>
+        </a>
+        <div class="abstract-content">
+            
+月亮是夜晚的伤口
+
+这里很安静，感觉很好，草地清新而纯净，阴凉处，阳光像乖巧的孩子。 
+我的生命在这里消融于强烈的渴望中。 
+我已说不清渴望，我的意志在这里消融。外表平静，内心涌动，暖流串联我的情绪，我糊涂了，一切都糊涂了，但这一切都被证明是错误的。 
+我不再想听任何抱怨，但在纯洁而梦幻的房里还有些温和的抱怨，再次让我一无所知。 
+我只知道这儿很安静，脱离所有的需求和活动，感觉很好，我可以休息，没有时间权衡我的时间。
+
+
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/27</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/27/薪酬勾稽/" >
+            
+                <span>如何快速进行薪酬勾稽</span>
+        </a>
+        <div class="abstract-content">
+            
+巧用数据透视表
+
+
+注1：本文数据都是我自己编的
+注2：在前面插播一条求助信息，大家有没有又矮又胖的保温杯推荐，我的高瘦保温杯一碰就倒，一倒不是资料完蛋就是电脑完蛋
+
+写在前面在低年级同学的审计工作中，薪酬是一个比较繁琐的科目。它烦就烦在有一个步骤是对薪酬计提和成本费用的勾稽。一旦勾不上的话，就要一笔一笔凭证翻过去，看看到底是哪个步骤出了问题（啊，真的烦）。而某天我发现，运用透视的话，就能够快速找出哪几笔凭证出现了差错，可以大大提高我们的工作效率。
+思路先说思路，可能会有点抽象，后面会有具体步骤说明。一笔薪酬计提的凭证，正常的话应该是借成本费用，贷薪酬，且借贷方加起来的数字应该是一样的...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/27</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/27/社畜的第一步/" >
+            
+                <span>社畜的第一步</span>
+        </a>
+        <div class="abstract-content">
+            
+2018年10月，加入立信会计师事务所浙江分所啦啦啦
+
+  作为18年毕业的会计学专业学生，第一份工作大家基本都是去的企业、公务员或者事务所。我把立信作为自己职业生涯的起点，也是经过了几分考虑的。  首先，就业领域选择来看，会计师事务所是最能够锻炼人的地方。并且给予的是能力的提升，从而有着一种向上的职业路径。这种提升不是依赖于企业，而是依靠自己的能力。相比于企业或是公务员的晋升路线，离开事务所之后依旧能够拥有让别人信服的资本，而企业岗位的晋升带来的提升，更多的是被捆绑在了企业上面。我还是喜欢自己掌控自己的命运，我命由我不由天。  其次，从薪水方面，会计师事务所的薪水并不算低。虽比不上顶...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/27</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/27/秋天/" >
+            
+                <span>无题</span>
+        </a>
+        <div class="abstract-content">
+            “早晨给妹妹做了早饭，骑着自行车穿过梧桐树最密的一条街，进入了种满黄山栾和紫薇花的小路，地上已经铺了一层落花。一年前的初秋傍晚，骑着车下班，也是路过长长的种满黄山栾的街道，微风轻轻地吹着，就能落下好些，像柔柔绵绵鹅黄色的雪。我对这样的场景总是能格外地记得用心，回家以后，头发上还落着两颗小小的似桂花的花朵。屋里还是夏末茉莉的香气，我不舍把它们丢掉，用小玻璃瓶装了起来，第二天在杂志上写了一篇黄山栾的初秋。这种花开在初秋，只要有风，就能下一场大雪，没有香气，不经意能淋得满身。暮野黛衫，落日气清，衢城有了初秋的样子，我在屋檐下呆呆地看了良久，小步跑进她的秋天”
+
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/27</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/27/第一年工作总结/" >
+            
+                <span>第一年工作总结</span>
+        </a>
+        <div class="abstract-content">
+            
+部门每年每个人都要做工作总结。暂且把今年的稿子保存在这吧个人工作总结不知不觉，已经到了19年的6月份。这已经是我在立信工作的第九个月了。在过去的九个月中，我参与了3个年报审计项目，到达过8个城市，审计了13家公司的报表科目，出差125天，累计申报工时2158.83小时。工作内容从走访、盘点，到年审、内控审计，从早上7点押送底稿到晚上10点跑银行询证函，从一张张凭证的翻阅到财务报告的编写。总结我这9个月以来的工作，忙碌而充实，完成任务的同时也留下了一些不足之处。我将这大半年以来的工作按内容总结如下：一、    预查首先是预查。10月入职之后没几天，就开始了大华的预查工作。预查作为年报审计...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/27</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/27/correl函数/" >
+            
+                <span>曲线拟合以及correl函数在分析性程序中的运用</span>
+        </a>
+        <div class="abstract-content">
+            
+当不了最骚的审计员，就努力当最基客的审计员
+
+
+引言
+18年汇率趋势
+数据处理
+曲线拟合
+correl函数运用
+标签说明引言在审计工作中，分析性程序的有效运用能够减少细节测试的范围，能够大大提高审计效率。且分析性程序在审计方法中具有形而上、宏观的特点，能够让我们在大方向上了解企业与行业，对于实施实质性程序也有个引导的作用。然而，许多分析性程序在数据与图表上得出的结论过于主观，且缺少统计原理的支撑。比如以销售费用与收入的波动为例，正常来说，运费的分月曲线应该与收入的分月曲线波动一致。如果是有运费跨月或者收入确认隔月确认的现象，则两条曲线有一个前后步伐的差，就如同正弦函数与余弦函数一样，趋...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/27</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/10/27/2018/" >
+            
+                <span>再见2018</span>
+        </a>
+        <div class="abstract-content">
+            2018年，对于我而言发生了许多事情。年初的时候，可以说自己如同一片迷雾，还有许多的不确定性，到了年底已经清晰明朗了起来。上一次发生这么多事情的年份还是2014年。2014年，高考、填报志愿、做手术、成为大学生、第一次恋爱。2018年，考研失败、找工作、身份转变、成为社会人、领到第一笔薪水、杭州买房。年初的我还不确定自己会在哪个城市发展，年底的时候已经给以后的生活定下了基调。回想这一年，也真是成长了许多。感谢工作的需要，让我从一个腼腆内向的实习生成为了现在独当一面，走南闯北的一年级。感觉自己的性格也改变了许多，变得外向、自信了起来。刚毕业的那段时间，倔强地不想向家里要钱，工资么又没有，硬...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/27</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    <!-- paginator  -->
+    
+    <nav class="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">NEXT ></a>
+    </nav>
+    
+</main>
+            <!-- profile -->
+            
+            <div class="profile">
+    <img class="profile-avatar" alt="avatar" src= /avatar/Misaka.jpg >
+    <div class="profile-name">fi3ework</div>
+    
+    <div class="profile-signature">
+        witness me
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/10/27/戊戌中秋夜/" data-id="ckgrea3tt0007zguu0cckqqif" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-新绛小记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/27/新绛小记/" class="article-date">
-  <time datetime="2020-10-27T03:12:30.720Z" itemprop="datePublished">2020-10-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/出差杂记/">出差杂记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
     
     
-      <header class="article-header">
+    <div class="profile-social">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/27/新绛小记/">新绛小记</a>
-    </h1>
-  
-
-      </header>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>由于工作，我经常在全国各地出差。不妨就对各地风土人情做一个记录。</p>
-</blockquote>
-<p>新绛位于山西省，是运城市下面的一个县，靠近河南。由于当初做的一家自来水公司的上市，其分公司在新绛，我便有机会去了这个西部地区的小县城。</p>
-<p>新绛城市规模不大，人口也就30来万。我对于这种规模的县城很感兴趣，因为我的老家龙泉市，也就是30来万人口的规模。去小县城就仿佛有一种回家的感觉。我往往喜欢将当地与我老家做一个对比。新绛与龙泉人口差不多，不过算人均GDP的话，只有龙泉的六成水平。但是，如果不查数据，只看当地的风貌的话，感觉还不到六成的水平。在当地转悠的时候，恍惚间好像回到了十多年前的龙泉，颇有点穿越的意味。</p>
-<p>我们住的酒店是海泉大酒店，算是当地最好的酒店了。旁边就是海泉中学，海泉中学好像每年都会出几个清北的毕业生，这比我们龙泉一中倒是牛逼多了。周日的晚上是我们项目组难得的休息时间，此时正好是海泉中学学生回学校的时候。在旁边的小吃摊上，很多高中小情侣腻腻歪歪，挺有意思的。</p>
-<p>记得有一个周末，我想着去新绛最繁华的地方转转，就走到了他们新城的商业区。路上有几个小孩子一看就不太好惹的样子，很像我以前读初中时候的那些混子。我害怕他们打劫，就加快了步伐。当地没有KFC，龙泉在十年前就开了第一家KFC。不过倒是有很多德克士。然后有一两家阿迪耐克的专卖店，不过生意冷清，门可罗雀。新绛的的士司机好像也不太喜欢用打车软件，主要都是靠路边招手打车。我刚开始在滴滴打了很久都没打到。然后那里的的士是随叫随停的，拉了一个客人还会再继续拉。我初来乍到，也不好多说什么，只入乡随俗罢了。</p>
-<p>有一次为了不影响同房间的同事加班，我便自己去找网吧打游戏去了。新绛的网吧生意火爆，真的就和十年前，我初中时候在龙泉的网吧一模一样。现在龙泉的网吧倒闭的差不多了。若是三年前，龙泉那时候网吧生意尚可。网吧里99%的人都是在玩英雄联盟或者吃鸡这两款游戏。如果是一零年左右的话，那时候龙泉的网吧里百花齐放，啥游戏都有。CF、DNF、DOTA、魔兽等等等等。不过在2019年，新绛的网吧里居然依旧百花齐放。网吧里以中学生为主，然后很多人居然在玩CF。我原本以为CF已经是一个deadgame了，要玩FPS也是CSGO，没想到在山西的五线小县城，CF依旧很受欢迎。</p>
-<p>当地污染严重，空气质量奇差无比。可能也是重工业以及煤矿产业的衰落。当初山西可是能够实现医疗免费的省份，人民福利很高。新绛由于空气污染严重，为了限制汽车尾气的排放，在当地搞了限行政策。在一个五线小县城搞限行，也是刷新了我的认知。</p>
-<p>当地以面食为主，各种面我吃了个遍。有个好玩的叫做裤带面。说来西安那边也很多面食的，biangbiang面之类的。好像西北地区的主食就是面食。除了面以外，新绛的羊肉，真的是让我心心念念，垂涎无比，是我此生吃到过的最好吃的羊肉。去的时候是在冬天，所以一碗羊肉下去，顿时不再寒冷。那边店里的羊肉是按斤卖的。煮的很烂，入口即化。</p>
-<p>在另一个县城曲沃，还去了晋国博物馆。晋被三分，春秋结束。</p>
-<p><img src="http://static.zybuluo.com/onlyhijack/ajqhtiydi6749xbwu93iecow/%E4%B8%8D%E7%9F%A5%E9%81%93%E6%98%AF%E4%BB%80%E4%B9%88%E9%9D%A2.png" alt="不知道是什么面.png-488.8kB"><br><img src="http://static.zybuluo.com/onlyhijack/0a8zm4h9e3bbaox68cakrxvc/%E5%BD%93%E5%9C%B0%E7%9A%84%E7%BD%91%E5%90%A7.png" alt="当地的网吧.png-533kB"><br><img src="http://static.zybuluo.com/onlyhijack/ishbspxop4wk6npf8nvr266m/%E7%B3%9F%E7%B3%95%E7%9A%84%E7%A9%BA%E6%B0%941.png" alt="糟糕的空气1.png-138.3kB"><br><img src="http://static.zybuluo.com/onlyhijack/5u9pxzioq3sd3io0t2f1o5jq/%E7%B3%9F%E7%B3%95%E7%9A%84%E7%A9%BA%E6%B0%942.png" alt="糟糕的空气2.png-2247.9kB"><br><img src="http://static.zybuluo.com/onlyhijack/dehunmrjiwfgva74567hyfjv/%E5%91%A8%E6%97%A5%E6%99%9A%E4%B8%8A%E5%9B%9E%E6%A0%A1%E7%9A%84%E9%AB%98%E4%B8%AD%E7%94%9F.png" alt="周日晚上回校的高中生.png-2299.6kB">!<br><img src="http://static.zybuluo.com/onlyhijack/j3gopsuh4vhd77kxl5rm0wil/%E5%9B%BE%E7%89%879C72DA4E7FCBCBF867376C6230ABDF2A.png" alt="博物馆"><br><img src="http://static.zybuluo.com/onlyhijack/2oq14h5g82i0kkmup9lmrnep/%E5%9B%BE%E7%89%8770E1C881D72FF136223C648E7AB1A89D.png" alt="图片70E1C881D72FF136223C648E7AB1A89D.png-2512.1kB"><br><img src="http://static.zybuluo.com/onlyhijack/cm9ljrzuhu92rvhcxyjbq5ml/%E5%9B%BE%E7%89%872604D9ECE74D758783C64A2B216C8837.png" alt="图片2604D9ECE74D758783C64A2B216C8837.png-2962.6kB"><br><img src="http://static.zybuluo.com/onlyhijack/1epm8nrlxzjjd0oa9vog5pll/%E5%9B%BE%E7%89%87BB8FD50E38DE626256AA956846CDE60F.png" alt="图片BB8FD50E38DE626256AA956846CDE60F.png-1197.1kB"></p>
+        
+            
+                <a href="mailto:12345@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/fi3ework" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
 
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/10/27/新绛小记/" data-id="ckgrea3tv0009zguu1nx8gasa" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-月亮是夜晚的伤口" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/27/月亮是夜晚的伤口/" class="article-date">
-  <time datetime="2020-10-27T03:12:30.720Z" itemprop="datePublished">2020-10-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Moonlight/">Moonlight</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
     
     
-      <header class="article-header">
+        <div class="friends">
+            <div>FRIENDS</div>
+            
+                
+                    <span>
+                        <a href= //www.baidu.com target="_black">friendA</a>
+                    </span>
+                
+            
+                
+                    <span>
+                        <a href= //www.google.com target="_black">friendB</a>
+                    </span>
+                
+            
+                
+            
+        </div>
+    
+    
+        <div class="about-me">
+            <a href = "/about" >ABOUT ME</a>
+        </div>
+    
+</div>
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/27/月亮是夜晚的伤口/">月亮是夜晚的伤口</a>
-    </h1>
-  
-
-      </header>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>月亮是夜晚的伤口</p>
-</blockquote>
-<p>这里很安静，感觉很好，<br>草地清新而纯净，<br>阴凉处，阳光<br>像乖巧的孩子。 </p>
-<p>我的生命在这里<br>消融于强烈的渴望中。 </p>
-<p>我已说不清渴望，<br>我的意志在这里消融。<br>外表平静，内心涌动，<br>暖流串联我的情绪，<br>我糊涂了，一切都糊涂了，<br>但这一切都被证明是错误的。 </p>
-<p>我不再想听任何抱怨，<br>但在纯洁而梦幻的房里<br>还有些温和的抱怨，<br>再次让我一无所知。 </p>
-<p>我只知道这儿很安静，<br>脱离所有的需求和活动，<br>感觉很好，我可以休息，<br>没有时间权衡我的时间。</p>
-<p><img src="http://thyrsi.com/t6/673/1551023409x2890174040.png" alt="此处输入图片的描述"></p>
+        
+            
+                <a href="mailto:12345@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/fi3ework" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
 
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/10/27/月亮是夜晚的伤口/" data-id="ckgrea3tx000czguugug35712" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-薪酬勾稽" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/27/薪酬勾稽/" class="article-date">
-  <time datetime="2020-10-27T03:12:30.720Z" itemprop="datePublished">2020-10-27</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/datawhisper/">datawhisper</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/27/薪酬勾稽/">如何快速进行薪酬勾稽</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>巧用数据透视表</p>
-</blockquote>
-<ul>
-<li>注1：本文数据都是我自己编的</li>
-<li>注2：在前面插播一条求助信息，大家有没有又矮又胖的保温杯推荐，我的高瘦保温杯一碰就倒，一倒不是资料完蛋就是电脑完蛋</li>
-</ul>
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>在低年级同学的审计工作中，薪酬是一个比较繁琐的科目。它烦就烦在有一个步骤是对薪酬计提和成本费用的勾稽。一旦勾不上的话，就要一笔一笔凭证翻过去，看看到底是哪个步骤出了问题（啊，真的烦）。而某天我发现，运用透视的话，就能够快速找出哪几笔凭证出现了差错，可以大大提高我们的工作效率。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>先说思路，可能会有点抽象，后面会有具体步骤说明。<br>一笔薪酬计提的凭证，正常的话应该是借成本费用，贷薪酬，且借贷方加起来的数字应该是一样的。不一样的话就是费用没过薪酬或别的问题。而我的思路就是，将每一笔凭证标上一个唯一的编号（这步是关键）。然后将薪酬的贷方数字按负数写在借方列上，最后将所有薪酬贷方的行与所有成本费用借方的行列在同一个表上，通过透视，行标签选择唯一编号，将借方列数字求和。因为借方列已经包含了薪酬的贷方负数与成本费用的借方正数，如果凭证正常的话，求和就是0。所有有差错的凭证，就是所有求和不是0的凭证。</p>
-<h2 id="步骤引导"><a href="#步骤引导" class="headerlink" title="步骤引导"></a>步骤引导</h2><p>首先，从账证查询软件中导出薪酬、成本费用的相关明细。这里我选择了“工资”这一二级明细。薪酬的导出来就如下图所示：<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/KRxR2JE3KsplTjqxZiHfbAMEIfBw.8IZ36osNnLskeE!/b/dDMBAAAAAAAA&amp;bo=ewU2AnsFNgIDCSw!&amp;rf=viewer_4" alt="应付职工薪酬——工资明细导出"><br>然后，通过筛选，过滤掉薪酬的借方发生额明细<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/pG0p3Xd2ZUnySUjykaG6KMP351wpmiK2E*DJg7ZF26M!/b/dFMBAAAAAAAA&amp;bo=jwHcAY8B3AEDCSw!&amp;rf=viewer_4" alt=""><br>之后，在“借方金额”列，将“贷方金额”列的数字的负数摘过来，如下图：<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/MV0*y5DGYjeS3jU6ku0omgH0RDD6XG7yHOntXl*DIdI!/b/dDYBAAAAAAAA&amp;bo=NgTPADYEzwADCSw!&amp;rf=viewer_4" alt=""><br>别忘了数值化<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/ZFEI6XadmHe.nIlSiNYlXlhdriR90jA4meuvOYSgp7s!/b/dDABAAAAAAAA&amp;bo=vwHiAL8B4gADCSw!&amp;rf=viewer_4" alt="公式数值化"><br>之后，将处理过的表粘贴到一张新的工作簿上。我们可以给这张工作簿取名“dog”。粘贴之后，可以将“方向”列与“金额”列删掉，加上一列“科目”，便于之后的查找。如下图所示：<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/rZVrGnay43r*sbuyuylXG4GM3x7CziQW7He3K43GZrA!/b/dFMBAAAAAAAA&amp;bo=uANsAbgDbAEDCSw!&amp;rf=viewer_4" alt=""><br>贴完薪酬明细后，我们再处理成本费用下的“工资”明细。<br>如下图就是管理费用明细，把贷方发生额的明细筛掉，选择只包含借方的，同样粘贴到工作簿“dog”中<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/9TI08*1XabAFHCaxy2YI1MbWbrSdnrfyZgzcByJ1Ayg!/b/dFQBAAAAAAAA&amp;bo=OgQXAToEFwEDCSw!&amp;rf=viewer_4" alt=""><br>把所有成本费用的借方摘到“dog”后，我们就能得到这么一张表：<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/q41etiui8r0BZJxGA5rIQ2*6V*iUyTSuaQLv0RqYqq0!/b/dFQBAAAAAAAA&amp;bo=.gPjAvoD4wIDCSw!&amp;rf=viewer_4" alt=""><br>现在，关键的一步来了。我们可以将凭证的月、日、字、号等列连起来，这样每笔凭证就都有了自己独有的编码，不会和别的凭证重复。如下图：<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/U6cuPLGwdfHJXqG3eCIt0C1oW9G6LEabA0dFX6RUcqE!/b/dLYAAAAAAAAA&amp;bo=ygLBAMoCwQADCSw!&amp;rf=viewer_4" alt=""><br><strong>数值化</strong>后，我们就能得到最终的这么一张表（如下图）<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/aqU55SIl14*XxDDsT7HXAFki5*hnhQ0xP7UewXIOyg8!/b/dLYAAAAAAAAA&amp;bo=7AQNAuwEDQIDCSw!&amp;rf=viewer_4" alt=""><br>然后，将这张表透视，行选择我们之前给予每笔凭证的唯一编码，求和项选择“借方金额”。由于同一笔凭证的贷方计提工资数字我们用了负数，然后与借方的费用计提数加起来，应该是要等于0的。因为薪酬贷方=费用借方。而一笔凭证如果薪酬贷方≠成本费用借方的话，那么透视后就不会为0。透视结果如下图所示，求和项≠0的凭证，就是有问题的。而我们可以通过唯一编码快速定位问题凭证。<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/9trBPhmYbOXSzbjR2yAlf9wn9KAGdw2MTlxzxcj6Zxk!/b/dDEBAAAAAAAA&amp;bo=rgHoAK4B6AADCSw!&amp;rf=viewer_4" alt="透视结果"><br>因为之前我们加了一列“科目”列，通过搜索唯一编码，就能看到错误的凭证到底在那个科目下面，再去导账软件找就vans了。<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/YMPLM9EwsueIC4ee7sQ9FiWnLuaVnCGZ.4aSQU3GqVk!/b/dFMBAAAAAAAA&amp;bo=5gS3AuYEtwIDCSw!&amp;rf=viewer_4" alt=""><br>这样，我们就能够快速找到问题凭证，而不是去一笔一笔翻了。蟹蟹大噶！</p>
-
-      
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/10/27/薪酬勾稽/" data-id="ckgrea3uk000tzguug9idtq0p" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-社畜的第一步" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/27/社畜的第一步/" class="article-date">
-  <time datetime="2020-10-27T03:12:30.705Z" itemprop="datePublished">2020-10-27</time>
-</a>
+    <!-- 不蒜子  -->
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/随笔/">随笔</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
+    <div class="busuanzi-container">
     
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/27/社畜的第一步/">社畜的第一步</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>2018年10月，加入立信会计师事务所浙江分所啦啦啦</p>
-</blockquote>
-<p>  作为18年毕业的会计学专业学生，第一份工作大家基本都是去的企业、公务员或者事务所。我把立信作为自己职业生涯的起点，也是经过了几分考虑的。<br>  首先，就业领域选择来看，会计师事务所是最能够锻炼人的地方。并且给予的是能力的提升，从而有着一种向上的职业路径。这种提升不是依赖于企业，而是依靠自己的能力。相比于企业或是公务员的晋升路线，离开事务所之后依旧能够拥有让别人信服的资本，而企业岗位的晋升带来的提升，更多的是被捆绑在了企业上面。我还是喜欢自己掌控自己的命运，我命由我不由天。<br>  其次，从薪水方面，会计师事务所的薪水并不算低。虽比不上顶级的公务员或者企业，但是高于平均水平不少。且后期能够远远甩开别的行业。<br>  另外，从行业选择来看。互联网作为现在高薪行业的代表，根本在于员工构成了几乎全部的生产资料，员工必须时刻学习，保证生产力不落后。而制造业的生产资料，大部分是设备，只有少部分是员工。审计行业在这一点上与互联网相似，员工几乎构成了生产资料的全部，且必须不断地进行学习。故而会计师事务所虽处于夕阳行业，却仍能够给出不错的剩余价值分成。相比于互联网，同等高考分数的会计专业毕业生的薪水只有程序员的三分之一。但有一点不能忽视，程序员在35岁之后面临着转行以及淘汰的风险，而会计是一个越老越吃香的行业。马云的传承人张勇便是从审计开始起步的。<br>  还有，从地点来看。作为浙江人，我倾向于在包邮区工作。上海房价过高，而杭州显然友好很多。在杭州，四大的分所ipo业务较少。而立信与天健虽未内资所，但在杭州而言业务广泛，得到的锻炼也更多。立信首先给了我offer，且考虑到立信的同学较多，所以选择了立信浙江分所。<br>  二十部只有二十几个员工，同事们年龄相仿，相处愉快。各地出差，行万里路，我也很喜欢。而且工作有挑战，能够提升自我，增强能力。仅有的几个缺点，我想了一下，一是加班太狠，不过年轻还是要拼搏，二是薪水较少，不过在立信浙江分所总体而言，二十部还算不错，三是二十部的好看的小姐姐太少了，呜呜呜呜呜呜呜呜</p>
-
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/10/27/社畜的第一步/" data-id="ckgrea3ty000dzguug3p5go4s" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-秋天" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/27/秋天/" class="article-date">
-  <time datetime="2020-10-27T03:12:30.705Z" itemprop="datePublished">2020-10-27</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/随笔/">随笔</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/27/秋天/">无题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>“早晨给妹妹做了早饭，骑着自行车穿过梧桐树最密的一条街，进入了种满黄山栾和紫薇花的小路，地上已经铺了一层落花。一年前的初秋傍晚，骑着车下班，也是路过长长的种满黄山栾的街道，微风轻轻地吹着，就能落下好些，像柔柔绵绵鹅黄色的雪。我对这样的场景总是能格外地记得用心，回家以后，头发上还落着两颗小小的似桂花的花朵。屋里还是夏末茉莉的香气，我不舍把它们丢掉，用小玻璃瓶装了起来，第二天在杂志上写了一篇黄山栾的初秋。这种花开在初秋，只要有风，就能下一场大雪，没有香气，不经意能淋得满身。暮野黛衫，落日气清，衢城有了初秋的样子，我在屋檐下呆呆地看了良久，小步跑进她的秋天”</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/10/27/秋天/" data-id="ckgrea3ug000rzguuncgiq6tu" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-第一年工作总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/27/第一年工作总结/" class="article-date">
-  <time datetime="2020-10-27T03:12:30.705Z" itemprop="datePublished">2020-10-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/审计物语/">审计物语</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/27/第一年工作总结/">第一年工作总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>部门每年每个人都要做工作总结。暂且把今年的稿子保存在这吧<br>个人工作总结<br>不知不觉，已经到了19年的6月份。这已经是我在立信工作的第九个月了。在过去的九个月中，我参与了3个年报审计项目，到达过8个城市，审计了13家公司的报表科目，出差125天，累计申报工时2158.83小时。工作内容从走访、盘点，到年审、内控审计，从早上7点押送底稿到晚上10点跑银行询证函，从一张张凭证的翻阅到财务报告的编写。总结我这9个月以来的工作，忙碌而充实，完成任务的同时也留下了一些不足之处。我将这大半年以来的工作按内容总结如下：<br>一、    预查<br>首先是预查。10月入职之后没几天，就开始了大华的预查工作。预查作为年报审计的重要的前期准备工作，做得好的话可以给年报减轻很大的压力，年报期间的许多工作也可以在预查期间先做掉，或者起码是能够在预查期间整理清楚思路，以便后续年报工作的进行。由于预查没有强制性得要求交出什么底稿之类的工作成果，最多也就是描述一下预查时发现的问题之类的。所以我在刚开始预查的时候没有意识到预查工作的重要性，没能够较好地减轻年审工作的压力。导致年审时候的工作并没有因为预查而轻松多少。这也算是一个教训。所以对于我自己而言，以后的预查工作还是当成一次对10月31号财务报表的审计看待，会更好一点。虽然预查时候填列在底稿上面的数字也会由于变动而导致年审期间需要重新填列。但起码能够理清前10个月的相关变动，整理前10个月的异常。就算什么问题也没看出来，也能通过填列底稿来发现底稿的呈现方式是否美观，底稿形式是否需要修正，底稿的链接是否高效且正确。这样在年审的时候起码不用再花时间在改底稿格式上面了。<br>二、    资料<br>获取审计资料是审计工作重要的环节。资料这部分还是从最开始的列示待补资料说起。列待补资料的时候要清楚哪块认定必须拿到哪些资料。今年桐乡水务的股权变更，我刚开始就只列了“全套工商资料”这种不够明确的说法，导致刚开始我只拿到了股东会决议、章程、营业执照这些资料，而没有拿到转让协议。也是后来张俊慧问我要的时候我才知道转让协议也是需要的，之后才让企业给补了。对于待补资料这块，我个人认为还是得列得尽可能得详细且全面。当然企业到最后能不能给全是另外一回事了。但我们刚开始列的时候还是得尽可能地多列，就像论语里说的，“取上得中，取中得下”一样，虽然企业最后给得不全，但如果我们提都没向企业提的话，就根本不可能拿到资料。列完待补资料以后，催收资料也是很重要的。我觉得审计工作的日常还是尽可能地多催一催企业，时不时地提醒一下。比如每天刚到审计现场的时候，中午晚上一起吃饭的时候 ，或者晚上在qq上，都可以催一下，做到让他们防不胜防。因为资料我们一开始提了，之后没有及时催的话，别人就有可能觉得这些资料我们是不是不需要了。最后，列完资料，拿到资料后，对资料的保管也是十分重要的。不是说拿到资料就万事大吉了。当然，我个人认为，拿到的资料最理想的状态是每个都电子版地备份一份，这样就不怕丢了。当然，我们的工作很忙，没法达到这种完美的状态，所以最起码，拿到的资料我们得搞个清单列示一下，然后每个资料贴好条子放在一起。企业在把资料刚给到我们的时候，我们必须得看一下资料对不对，当面提出疑问，避免事后扯皮。<br>三、    日常工作安排<br>在我们忙碌的年审中，合理安排自己每天的工作是十分必要的。对于我们低年级，只需安排好自己的工作就好，还是比较简单的。当然，作为低年级同事，我们的时间并不是完全属于我们自己，我们会经常被打扰干一些别的工作。所以对于日常的安排不能拍得太满，得留出一定的时间进行机动安排。我个人是比较偏好于每天的忙碌状态差不多的那种，而不是前期松后期紧，或者前期紧后期松。所以对于项目上的工作，要按照日期进行平分，以周为大单位，天为小单位，安排好每天的任务。并且将期限提前20%，以应对突发事件。<br>四、    底稿<br>个人认为，底稿是呈现审计工作的一种形式，而不是审计工作本身。不能光注重底稿而忽视了审计工作的质量。当然，好的工作成果应该是有好的工作质量的同时要有清晰美观的工作呈现。但如果仅仅坐在办公室里画excel的话其实用处不大，当然我刚开始工作的时候是连excel也都还不太会用。一年级的话，主要面对的科目是除了收入成本循环以外的其他科目。对于其他科目，其实用excel我自己摸索了一点小技巧，这里简单提一下。比如薪酬勾稽的时候，可以将所有的薪酬以及对应的费用的会计记录从系统里导出来，然后将薪酬的金额取负数，这样透视一下，金额合计数不等于0的就是借贷方勾稽够不上的凭证了。还有填费用明细分月表的时候，也可以将该费用的所有凭证记录导出来，然后以明细为行，月份为列，借方金额为合计数来透视，透视之后的结果就能够直接复制到excel里去了，而不是说在新纪元里每个明细分月展开，然后再转置粘贴，这样实在是太麻烦了。<br>时间有限，我就简单总结上面这四点。在最后感谢一下过去几个月里领导和同事的帮助与指点。在今后的工作中，我要积累经验教训，努力克服缺点，在工作中磨练自己，尽职尽责得做好各项工作。祝各位同事身体健康，家庭和睦，快乐工作，不要脱发。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/10/27/第一年工作总结/" data-id="ckgrea3um000wzguuw3vi9jlb" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-correl函数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/27/correl函数/" class="article-date">
-  <time datetime="2020-10-27T03:12:30.689Z" itemprop="datePublished">2020-10-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/datawhisper/">datawhisper</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/27/correl函数/">曲线拟合以及correl函数在分析性程序中的运用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>当不了最骚的审计员，就努力当最基客的审计员</p>
-</blockquote>
-<ul>
-<li>引言</li>
-<li>18年汇率趋势</li>
-<li>数据处理</li>
-<li>曲线拟合</li>
-<li>correl函数运用</li>
-<li>标签说明<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2>在审计工作中，分析性程序的有效运用能够减少细节测试的范围，能够大大提高审计效率。且分析性程序在审计方法中具有形而上、宏观的特点，能够让我们在大方向上了解企业与行业，对于实施实质性程序也有个引导的作用。然而，许多分析性程序在数据与图表上得出的结论过于主观，且缺少统计原理的支撑。比如以销售费用与收入的波动为例，正常来说，运费的分月曲线应该与收入的分月曲线波动一致。如果是有运费跨月或者收入确认隔月确认的现象，则两条曲线有一个前后步伐的差，就如同正弦函数与余弦函数一样，趋势一样，步伐有前后差距。而不同于三角函数曲线的是，现实工作中的曲线，往往不会完全一致。到底长得多像，两条曲线才算拟合呢？恐怕每个审计员心里的标准都不一样。为了避免主观判断的影响，我们可以算出两条曲线的拟合程度。计算曲线的拟合程度，用得比较多的工具是origin，matlab也可以用。不过对于大部分审计员同事而言，excel是最顺手的工具。而excel中竟然也有一个函数能算曲线之间的拟合程度（没想到吧！），那就是correl函数。<h2 id="18年汇率趋势"><a href="#18年汇率趋势" class="headerlink" title="18年汇率趋势"></a>18年汇率趋势</h2>下面，我就以财务费用中的汇兑损益为例，讲解一下correl函数的具体用法。<br>在这之前，让我们先回去一下即将过去的这一年。<br>“从波罗的海的什切青到亚得里亚海边的里雅斯特，一幅横贯欧洲大陆的铁幕已经降落下来”。美国副总统彭斯在10月4日的演讲让我们看到了当年丘吉尔的演说的样子。贸易战纷争标志着中美两国正式走上了正面对抗的舞台。而随着美联储的多次加息，今年年初以来，美元对人民币大幅升值，人民币贬值趋势可以说是一泻千里。<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/bv*jkWWboag9LyOMae*ArM4wzUFfOdwR7S9htuHXXuY!/b/dFIBAAAAAAAA&amp;bo=vwMZAgAAAAADB4U!&amp;rf=viewer_4" alt="美元兑人民币汇率——来自新浪财经"><br>在汇率波动较大的年份下，如果一个公司以出口为主要销售方式，或以进口为主要购买方式，则汇率会对公司的财务费用产生巨大的影响。当然，许多企业能够未雨绸缪，通过期权或远期结售汇的形式将汇率波动风险对冲掉。但不是每个人都能够未卜先知。所以，在企业产生大额汇兑损益的时候，对汇兑损益进行审计分析就很有必要。</li>
-</ul>
-<h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><p>在会计实务中，企业往往会在每个月月末，计算以外币为原币计量的资产或负债产生的汇兑损益。假设ABC公司是中国境内一家产品主要出口到美国的企业，且应收账款（美元）在每个月份之间的波动不大。那么ABC公司的汇兑损益主要就与美元兑人民币汇率相关。在每个月月末，企业会根据汇率较上个月月末的变动，确认汇兑损益。从数学的语言上说，就是汇率是fx的话，那么汇兑损益就相当于与fx的导函数相关。所以，对于汇率，我们选取其导函数，对于汇兑损益，我们选取其本身。<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/DbrFvcGSV0jC91RnFVboAW0aS*OURRIMNPjg1*9Nf44!/b/dC4BAAAAAAAA&amp;bo=6QHAAekBwAEDCSw!&amp;rf=viewer_4" alt="美元兑人民币汇率变动中间价——来自央行"><br>通过数据处理后，我们得到下面两个图。（ABC公司的汇兑损益是我看着汇率编的，你别说，编的还真像那么会事儿。）<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/QvdYYaE9yMP8qae84qN*okHhzV5ntjL6MbTaSbD4pHA!/b/dDMBAAAAAAAA&amp;bo=xgJhAsYCYQIDCSw!&amp;rf=viewer_4" alt="汇率与汇兑损益的对比"><br>这里提醒一下，汇率上升，人民币贬值，美元应收升值，企业获益，财务费用是负数，所以对汇兑损益我加了个负号，就是以横坐标为轴，进行轴对称变化。<br>好了，现在这两个图咋一看，长得还挺像。但是具体有多像呢？说不出来，反正很像就是了（嘻嘻）。这时候，为了度量曲线的拟合程度，correl函数就登场了。</p>
-<h2 id="correl函数运用"><a href="#correl函数运用" class="headerlink" title="correl函数运用"></a>correl函数运用</h2><p>correl函数是计算相关系数的。函数逻辑非常简单，把两条曲线的数值分别选中就好了。甚至可以不在汇兑损益加负数，因为负相关也是相关。<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/vnIGuHX5w8.KNpHUmtyJn35I3b39tG1tLLHwUxMWq64!/b/dFQBAAAAAAAA&amp;bo=hwPYAQAAAAADB38!&amp;rf=viewer_4" alt="correl函数"><br>根据计算结果，我们能够看到，拟合程度为0.969。一般而言，在0.9以上我们就可以认定两条曲线拟合了。有了这个相关系数的佐证，我们现在就能够大胆地、有底气地说出，企业计提的汇兑损益与汇率波动是正相关的！</p>
-<h2 id="标签说明"><a href="#标签说明" class="headerlink" title="标签说明"></a>标签说明</h2><p>这篇文章的标签是datawhisper。大家可能听过wind whisper，风语者，horse whisper，马语者，那datawhisper翻译过来就是数语者（很酷炫对吧）。由于自己本身比较喜欢数字与各种工具，想着怎么把这些工具与想法在工作中能够运用，就开设了这个专栏。我的口号是，当不了最骚的审计员，就努力当最geek的审计员XD</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/10/27/correl函数/" data-id="ckgrea3tf0000zguujh2js4rc" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2018" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/27/2018/" class="article-date">
-  <time datetime="2020-10-27T03:12:30.689Z" itemprop="datePublished">2020-10-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/随笔/">随笔</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/27/2018/">再见2018</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2018年，对于我而言发生了许多事情。年初的时候，可以说自己如同一片迷雾，还有许多的不确定性，到了年底已经清晰明朗了起来。上一次发生这么多事情的年份还是2014年。2014年，高考、填报志愿、做手术、成为大学生、第一次恋爱。2018年，考研失败、找工作、身份转变、成为社会人、领到第一笔薪水、杭州买房。年初的我还不确定自己会在哪个城市发展，年底的时候已经给以后的生活定下了基调。回想这一年，也真是成长了许多。感谢工作的需要，让我从一个腼腆内向的实习生成为了现在独当一面，走南闯北的一年级。感觉自己的性格也改变了许多，变得外向、自信了起来。刚毕业的那段时间，倔强地不想向家里要钱，工资么又没有，硬是在杭州吃了三个月泡面，交上了最初几个月的房租。10月入职后，生活方才渐渐地滋润了起来，买了PS4、AJ鞋，买了许多从中学时候就一直想买的东西，也算是完成了许多小小心愿。9月份爷爷离开了我们，想念他。工作后，部门的同事们都很好，部门的氛围我也很喜欢。在新员工培训的时候也认识了许多同一届的小伙伴。年底的时候摇到了房子，花了爸爸妈妈许多积蓄，也算是在杭州有个家了。过年回家的时候打算用工资给爸爸带两瓶红酒，给妈妈带一个小米扫地机器人，他们一定会喜欢的吧。<br>2019年，愿大家平安、快乐、健康，在各自的领域里继续发光。<br>桥都坚固，隧道都光明。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/10/27/2018/" data-id="ckgrea3tl0001zguul9ho1qmk" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Moonlight/">Moonlight</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/datawhisper/">datawhisper</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/出差杂记/">出差杂记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/审计物语/">审计物语</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/阅读笔记/">阅读笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/测试/" style="font-size: 10px;">测试</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/10/27/信用证与贸易融资/">信用证与贸易融资</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/27/戊戌中秋夜/">戊戌中秋夜</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/27/新绛小记/">新绛小记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/27/月亮是夜晚的伤口/">月亮是夜晚的伤口</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/27/薪酬勾稽/">如何快速进行薪酬勾稽</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
 </footer>
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">主页</a>
-  
-    <a href="/archives" class="mobile-nav-link">所有文章</a>
-  
-</nav>
+    <!-- toc -->
     
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 13
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/10/27/correl函数/" >曲线拟合以及correl函数在分析性程序中的运用</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/10/27/2018/" >再见2018</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/10/27/《猜测和偏见：何帆阅读笔记》/" >《猜测和偏见：何帆阅读笔记》</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/10/27/信用证与贸易融资/" >信用证与贸易融资</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/10/27/firstblog/" >first blog</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/10/27/戊戌中秋夜/" >戊戌中秋夜</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/10/27/新绛小记/" >新绛小记</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/10/27/月亮是夜晚的伤口/" >月亮是夜晚的伤口</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/10/27/社畜的第一步/" >社畜的第一步</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/10/27/秋天/" >无题</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/10/27/薪酬勾稽/" >如何快速进行薪酬勾稽</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/10/27/第一年工作总结/" >第一年工作总结</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/10/27/运用hexo和github构建博客的方法/" >运用hexo和github构建博客的方法</a>
+        </li>
+    
+    </div>
   </div>
-</body>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="测试"><span class="iconfont-archer">&#xe606;</span>测试</span>
+    
+        <span class="sidebar-tag-name" data-tags="诗集"><span class="iconfont-archer">&#xe606;</span>诗集</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="datawhisper"><span class="iconfont-archer">&#xe60a;</span>datawhisper</span>
+    
+        <span class="sidebar-category-name" data-categories="随笔"><span class="iconfont-archer">&#xe60a;</span>随笔</span>
+    
+        <span class="sidebar-category-name" data-categories="阅读笔记"><span class="iconfont-archer">&#xe60a;</span>阅读笔记</span>
+    
+        <span class="sidebar-category-name" data-categories="审计物语"><span class="iconfont-archer">&#xe60a;</span>审计物语</span>
+    
+        <span class="sidebar-category-name" data-categories="出差杂记"><span class="iconfont-archer">&#xe60a;</span>出差杂记</span>
+    
+        <span class="sidebar-category-name" data-categories="Moonlight"><span class="iconfont-archer">&#xe60a;</span>Moonlight</span>
+    
+        <span class="sidebar-category-name" data-categories="诗歌与茶"><span class="iconfont-archer">&#xe60a;</span>诗歌与茶</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "John Doe"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+     
+    </body>
 </html>
+
+
