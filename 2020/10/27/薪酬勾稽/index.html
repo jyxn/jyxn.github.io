@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>如何快速进行薪酬勾稽 | jyx&#39;s personal blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="巧用数据透视表   注1：本文数据都是我自己编的 注2：在前面插播一条求助信息，大家有没有又矮又胖的保温杯推荐，我的高瘦保温杯一碰就倒，一倒不是资料完蛋就是电脑完蛋  写在前面在低年级同学的审计工作中，薪酬是一个比较繁琐的科目。它烦就烦在有一个步骤是对薪酬计提和成本费用的勾稽。一旦勾不上的话，就要一笔一笔凭证翻过去，看看到底是哪个步骤出了问题（啊，真的烦）。而某天我发现，运用透视的话，就能够快速">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何快速进行薪酬勾稽">
+<meta property="og:url" content="http://yoursite.com/2020/10/27/薪酬勾稽/index.html">
+<meta property="og:site_name" content="jyx&#39;s personal blog">
+<meta property="og:description" content="巧用数据透视表   注1：本文数据都是我自己编的 注2：在前面插播一条求助信息，大家有没有又矮又胖的保温杯推荐，我的高瘦保温杯一碰就倒，一倒不是资料完蛋就是电脑完蛋  写在前面在低年级同学的审计工作中，薪酬是一个比较繁琐的科目。它烦就烦在有一个步骤是对薪酬计提和成本费用的勾稽。一旦勾不上的话，就要一笔一笔凭证翻过去，看看到底是哪个步骤出了问题（啊，真的烦）。而某天我发现，运用透视的话，就能够快速">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/KRxR2JE3KsplTjqxZiHfbAMEIfBw.8IZ36osNnLskeE!/b/dDMBAAAAAAAA&bo=ewU2AnsFNgIDCSw!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/pG0p3Xd2ZUnySUjykaG6KMP351wpmiK2E*DJg7ZF26M!/b/dFMBAAAAAAAA&bo=jwHcAY8B3AEDCSw!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/MV0*y5DGYjeS3jU6ku0omgH0RDD6XG7yHOntXl*DIdI!/b/dDYBAAAAAAAA&bo=NgTPADYEzwADCSw!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/ZFEI6XadmHe.nIlSiNYlXlhdriR90jA4meuvOYSgp7s!/b/dDABAAAAAAAA&bo=vwHiAL8B4gADCSw!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/rZVrGnay43r*sbuyuylXG4GM3x7CziQW7He3K43GZrA!/b/dFMBAAAAAAAA&bo=uANsAbgDbAEDCSw!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/9TI08*1XabAFHCaxy2YI1MbWbrSdnrfyZgzcByJ1Ayg!/b/dFQBAAAAAAAA&bo=OgQXAToEFwEDCSw!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/q41etiui8r0BZJxGA5rIQ2*6V*iUyTSuaQLv0RqYqq0!/b/dFQBAAAAAAAA&bo=.gPjAvoD4wIDCSw!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/U6cuPLGwdfHJXqG3eCIt0C1oW9G6LEabA0dFX6RUcqE!/b/dLYAAAAAAAAA&bo=ygLBAMoCwQADCSw!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/aqU55SIl14*XxDDsT7HXAFki5*hnhQ0xP7UewXIOyg8!/b/dLYAAAAAAAAA&bo=7AQNAuwEDQIDCSw!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/9trBPhmYbOXSzbjR2yAlf9wn9KAGdw2MTlxzxcj6Zxk!/b/dDEBAAAAAAAA&bo=rgHoAK4B6AADCSw!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/YMPLM9EwsueIC4ee7sQ9FiWnLuaVnCGZ.4aSQU3GqVk!/b/dFMBAAAAAAAA&bo=5gS3AuYEtwIDCSw!&rf=viewer_4">
+<meta property="og:updated_time" content="2018-11-30T14:51:51.641Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何快速进行薪酬勾稽">
+<meta name="twitter:description" content="巧用数据透视表   注1：本文数据都是我自己编的 注2：在前面插播一条求助信息，大家有没有又矮又胖的保温杯推荐，我的高瘦保温杯一碰就倒，一倒不是资料完蛋就是电脑完蛋  写在前面在低年级同学的审计工作中，薪酬是一个比较繁琐的科目。它烦就烦在有一个步骤是对薪酬计提和成本费用的勾稽。一旦勾不上的话，就要一笔一笔凭证翻过去，看看到底是哪个步骤出了问题（啊，真的烦）。而某天我发现，运用透视的话，就能够快速">
+<meta name="twitter:image" content="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/KRxR2JE3KsplTjqxZiHfbAMEIfBw.8IZ36osNnLskeE!/b/dDMBAAAAAAAA&bo=ewU2AnsFNgIDCSw!&rf=viewer_4">
+  
+    <link rel="alternate" href="/atom.xml" title="jyx&#39;s personal blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">jyx&#39;s personal blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">所有文章</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-薪酬勾稽" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/27/薪酬勾稽/" class="article-date">
+  <time datetime="2020-10-27T02:37:21.844Z" itemprop="datePublished">2020-10-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/datawhisper/">datawhisper</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      如何快速进行薪酬勾稽
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>巧用数据透视表</p>
+</blockquote>
+<ul>
+<li>注1：本文数据都是我自己编的</li>
+<li>注2：在前面插播一条求助信息，大家有没有又矮又胖的保温杯推荐，我的高瘦保温杯一碰就倒，一倒不是资料完蛋就是电脑完蛋</li>
+</ul>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>在低年级同学的审计工作中，薪酬是一个比较繁琐的科目。它烦就烦在有一个步骤是对薪酬计提和成本费用的勾稽。一旦勾不上的话，就要一笔一笔凭证翻过去，看看到底是哪个步骤出了问题（啊，真的烦）。而某天我发现，运用透视的话，就能够快速找出哪几笔凭证出现了差错，可以大大提高我们的工作效率。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>先说思路，可能会有点抽象，后面会有具体步骤说明。<br>一笔薪酬计提的凭证，正常的话应该是借成本费用，贷薪酬，且借贷方加起来的数字应该是一样的。不一样的话就是费用没过薪酬或别的问题。而我的思路就是，将每一笔凭证标上一个唯一的编号（这步是关键）。然后将薪酬的贷方数字按负数写在借方列上，最后将所有薪酬贷方的行与所有成本费用借方的行列在同一个表上，通过透视，行标签选择唯一编号，将借方列数字求和。因为借方列已经包含了薪酬的贷方负数与成本费用的借方正数，如果凭证正常的话，求和就是0。所有有差错的凭证，就是所有求和不是0的凭证。</p>
+<h2 id="步骤引导"><a href="#步骤引导" class="headerlink" title="步骤引导"></a>步骤引导</h2><p>首先，从账证查询软件中导出薪酬、成本费用的相关明细。这里我选择了“工资”这一二级明细。薪酬的导出来就如下图所示：<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/KRxR2JE3KsplTjqxZiHfbAMEIfBw.8IZ36osNnLskeE!/b/dDMBAAAAAAAA&amp;bo=ewU2AnsFNgIDCSw!&amp;rf=viewer_4" alt="应付职工薪酬——工资明细导出"><br>然后，通过筛选，过滤掉薪酬的借方发生额明细<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/pG0p3Xd2ZUnySUjykaG6KMP351wpmiK2E*DJg7ZF26M!/b/dFMBAAAAAAAA&amp;bo=jwHcAY8B3AEDCSw!&amp;rf=viewer_4" alt=""><br>之后，在“借方金额”列，将“贷方金额”列的数字的负数摘过来，如下图：<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/MV0*y5DGYjeS3jU6ku0omgH0RDD6XG7yHOntXl*DIdI!/b/dDYBAAAAAAAA&amp;bo=NgTPADYEzwADCSw!&amp;rf=viewer_4" alt=""><br>别忘了数值化<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/ZFEI6XadmHe.nIlSiNYlXlhdriR90jA4meuvOYSgp7s!/b/dDABAAAAAAAA&amp;bo=vwHiAL8B4gADCSw!&amp;rf=viewer_4" alt="公式数值化"><br>之后，将处理过的表粘贴到一张新的工作簿上。我们可以给这张工作簿取名“dog”。粘贴之后，可以将“方向”列与“金额”列删掉，加上一列“科目”，便于之后的查找。如下图所示：<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/rZVrGnay43r*sbuyuylXG4GM3x7CziQW7He3K43GZrA!/b/dFMBAAAAAAAA&amp;bo=uANsAbgDbAEDCSw!&amp;rf=viewer_4" alt=""><br>贴完薪酬明细后，我们再处理成本费用下的“工资”明细。<br>如下图就是管理费用明细，把贷方发生额的明细筛掉，选择只包含借方的，同样粘贴到工作簿“dog”中<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/9TI08*1XabAFHCaxy2YI1MbWbrSdnrfyZgzcByJ1Ayg!/b/dFQBAAAAAAAA&amp;bo=OgQXAToEFwEDCSw!&amp;rf=viewer_4" alt=""><br>把所有成本费用的借方摘到“dog”后，我们就能得到这么一张表：<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/q41etiui8r0BZJxGA5rIQ2*6V*iUyTSuaQLv0RqYqq0!/b/dFQBAAAAAAAA&amp;bo=.gPjAvoD4wIDCSw!&amp;rf=viewer_4" alt=""><br>现在，关键的一步来了。我们可以将凭证的月、日、字、号等列连起来，这样每笔凭证就都有了自己独有的编码，不会和别的凭证重复。如下图：<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/U6cuPLGwdfHJXqG3eCIt0C1oW9G6LEabA0dFX6RUcqE!/b/dLYAAAAAAAAA&amp;bo=ygLBAMoCwQADCSw!&amp;rf=viewer_4" alt=""><br><strong>数值化</strong>后，我们就能得到最终的这么一张表（如下图）<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/aqU55SIl14*XxDDsT7HXAFki5*hnhQ0xP7UewXIOyg8!/b/dLYAAAAAAAAA&amp;bo=7AQNAuwEDQIDCSw!&amp;rf=viewer_4" alt=""><br>然后，将这张表透视，行选择我们之前给予每笔凭证的唯一编码，求和项选择“借方金额”。由于同一笔凭证的贷方计提工资数字我们用了负数，然后与借方的费用计提数加起来，应该是要等于0的。因为薪酬贷方=费用借方。而一笔凭证如果薪酬贷方≠成本费用借方的话，那么透视后就不会为0。透视结果如下图所示，求和项≠0的凭证，就是有问题的。而我们可以通过唯一编码快速定位问题凭证。<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/9trBPhmYbOXSzbjR2yAlf9wn9KAGdw2MTlxzxcj6Zxk!/b/dDEBAAAAAAAA&amp;bo=rgHoAK4B6AADCSw!&amp;rf=viewer_4" alt="透视结果"><br>因为之前我们加了一列“科目”列，通过搜索唯一编码，就能看到错误的凭证到底在那个科目下面，再去导账软件找就vans了。<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/YMPLM9EwsueIC4ee7sQ9FiWnLuaVnCGZ.4aSQU3GqVk!/b/dFMBAAAAAAAA&amp;bo=5gS3AuYEtwIDCSw!&amp;rf=viewer_4" alt=""><br>这样，我们就能够快速找到问题凭证，而不是去一笔一笔翻了。蟹蟹大噶！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/10/27/薪酬勾稽/" data-id="ckgrd5dcz000p4ouuzdak1sxu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/27/诗歌与茶/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          看什么 6
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/27/第一年工作总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第一年工作总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Moonlight/">Moonlight</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/datawhisper/">datawhisper</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/关天茶舍/">关天茶舍</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/出差杂记/">出差杂记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/审计物语/">审计物语</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/诗歌与茶/">诗歌与茶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/阅读笔记/">阅读笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/搬运/">搬运</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/诗集/">诗集</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/搬运/" style="font-size: 10px;">搬运</a> <a href="/tags/测试/" style="font-size: 20px;">测试</a> <a href="/tags/诗集/" style="font-size: 10px;">诗集</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/27/运用hexo和github构建博客的方法/">运用hexo和github构建博客的方法</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/27/诗歌与茶/">看什么 6</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/27/薪酬勾稽/">如何快速进行薪酬勾稽</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/27/第一年工作总结/">第一年工作总结</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/27/秋天/">无题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">所有文章</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
