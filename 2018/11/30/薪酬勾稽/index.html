@@ -49,6 +49,12 @@
             </li>
           </a>
         
+          <a href="/tags" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              TAGS
+            </li>
+          </a>
+        
         
           <li class="menu-li animate__animated  animate__fadeInUp" id="sort">
              分类
@@ -95,6 +101,12 @@
       </div>
     </a>
   
+    <a href="/tags" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>TAGS</span>
+      </div>
+    </a>
+  
   
   </div>
 
@@ -127,7 +139,51 @@
 </ul>
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>在低年级同学的审计工作中，薪酬是一个比较繁琐的科目。它烦就烦在有一个步骤是对薪酬计提和成本费用的勾稽。一旦勾不上的话，就要一笔一笔凭证翻过去，看看到底是哪个步骤出了问题（啊，真的烦）。而某天我发现，运用透视的话，就能够快速找出哪几笔凭证出现了差错，可以大大提高我们的工作效率。</p>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>先说思路，可能会有点抽象，后面会有具体步骤说明。<br>一笔薪酬计提的凭证，正常的话应该是借成本费用，贷薪酬，且借贷方加起来的数字应该是一样的。不一样的话就是费用没过薪酬或别的问题。而我的思路就是，将每一笔凭证标上一个唯一的编号（这步是关键）。然后将薪酬的贷方数字按负数写在借方列上，最后将所有薪酬贷方的行与所有成本费用借方的行列在同一个表上，通过透视，行标签选择唯一编号，将借方列数字求和。因为借方列已经包含了薪酬的贷方负数与成本费用的借方正数，如果凭证正常的话，求和就是0。所有有差错的凭证，就是所有求和不是0的凭证。</p>
-<h2 id="步骤引导"><a href="#步骤引导" class="headerlink" title="步骤引导"></a>步骤引导</h2><p>首先，从账证查询软件中导出薪酬、成本费用的相关明细。这里我选择了“工资”这一二级明细。薪酬的导出来就如下图所示：<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/KRxR2JE3KsplTjqxZiHfbAMEIfBw.8IZ36osNnLskeE!/b/dDMBAAAAAAAA&amp;bo=ewU2AnsFNgIDCSw!&amp;rf=viewer_4" alt="应付职工薪酬——工资明细导出"><br>然后，通过筛选，过滤掉薪酬的借方发生额明细<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/pG0p3Xd2ZUnySUjykaG6KMP351wpmiK2E*DJg7ZF26M!/b/dFMBAAAAAAAA&amp;bo=jwHcAY8B3AEDCSw!&amp;rf=viewer_4" alt=""><br>之后，在“借方金额”列，将“贷方金额”列的数字的负数摘过来，如下图：<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/MV0*y5DGYjeS3jU6ku0omgH0RDD6XG7yHOntXl*DIdI!/b/dDYBAAAAAAAA&amp;bo=NgTPADYEzwADCSw!&amp;rf=viewer_4" alt=""><br>别忘了数值化<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/ZFEI6XadmHe.nIlSiNYlXlhdriR90jA4meuvOYSgp7s!/b/dDABAAAAAAAA&amp;bo=vwHiAL8B4gADCSw!&amp;rf=viewer_4" alt="公式数值化"><br>之后，将处理过的表粘贴到一张新的工作簿上。我们可以给这张工作簿取名“dog”。粘贴之后，可以将“方向”列与“金额”列删掉，加上一列“科目”，便于之后的查找。如下图所示：<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/rZVrGnay43r*sbuyuylXG4GM3x7CziQW7He3K43GZrA!/b/dFMBAAAAAAAA&amp;bo=uANsAbgDbAEDCSw!&amp;rf=viewer_4" alt=""><br>贴完薪酬明细后，我们再处理成本费用下的“工资”明细。<br>如下图就是管理费用明细，把贷方发生额的明细筛掉，选择只包含借方的，同样粘贴到工作簿“dog”中<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/9TI08*1XabAFHCaxy2YI1MbWbrSdnrfyZgzcByJ1Ayg!/b/dFQBAAAAAAAA&amp;bo=OgQXAToEFwEDCSw!&amp;rf=viewer_4" alt=""><br>把所有成本费用的借方摘到“dog”后，我们就能得到这么一张表：<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/q41etiui8r0BZJxGA5rIQ2*6V*iUyTSuaQLv0RqYqq0!/b/dFQBAAAAAAAA&amp;bo=.gPjAvoD4wIDCSw!&amp;rf=viewer_4" alt=""><br>现在，关键的一步来了。我们可以将凭证的月、日、字、号等列连起来，这样每笔凭证就都有了自己独有的编码，不会和别的凭证重复。如下图：<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/U6cuPLGwdfHJXqG3eCIt0C1oW9G6LEabA0dFX6RUcqE!/b/dLYAAAAAAAAA&amp;bo=ygLBAMoCwQADCSw!&amp;rf=viewer_4" alt=""><br><strong>数值化</strong>后，我们就能得到最终的这么一张表（如下图）<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/aqU55SIl14*XxDDsT7HXAFki5*hnhQ0xP7UewXIOyg8!/b/dLYAAAAAAAAA&amp;bo=7AQNAuwEDQIDCSw!&amp;rf=viewer_4" alt=""><br>然后，将这张表透视，行选择我们之前给予每笔凭证的唯一编码，求和项选择“借方金额”。由于同一笔凭证的贷方计提工资数字我们用了负数，然后与借方的费用计提数加起来，应该是要等于0的。因为薪酬贷方=费用借方。而一笔凭证如果薪酬贷方≠成本费用借方的话，那么透视后就不会为0。透视结果如下图所示，求和项≠0的凭证，就是有问题的。而我们可以通过唯一编码快速定位问题凭证。<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/9trBPhmYbOXSzbjR2yAlf9wn9KAGdw2MTlxzxcj6Zxk!/b/dDEBAAAAAAAA&amp;bo=rgHoAK4B6AADCSw!&amp;rf=viewer_4" alt="透视结果"><br>因为之前我们加了一列“科目”列，通过搜索唯一编码，就能看到错误的凭证到底在那个科目下面，再去导账软件找就vans了。<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/YMPLM9EwsueIC4ee7sQ9FiWnLuaVnCGZ.4aSQU3GqVk!/b/dFMBAAAAAAAA&amp;bo=5gS3AuYEtwIDCSw!&amp;rf=viewer_4" alt=""><br>这样，我们就能够快速找到问题凭证，而不是去一笔一笔翻了。蟹蟹大噶！</p>
+<h2 id="步骤引导"><a href="#步骤引导" class="headerlink" title="步骤引导"></a>步骤引导</h2><p>首先，从账证查询软件中导出薪酬、成本费用的相关明细。这里我选择了“工资”这一二级明细。薪酬的导出来就如下图所示：<br>
+        <span class="lazyload-img-span">
+        <img data-src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/KRxR2JE3KsplTjqxZiHfbAMEIfBw.8IZ36osNnLskeE!/b/dDMBAAAAAAAA&amp;bo=ewU2AnsFNgIDCSw!&amp;rf=viewer_4">
+        
+      <br>然后，通过筛选，过滤掉薪酬的借方发生额明细<br>
+        <span class="lazyload-img-span">
+        <img data-src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/pG0p3Xd2ZUnySUjykaG6KMP351wpmiK2E*DJg7ZF26M!/b/dFMBAAAAAAAA&amp;bo=jwHcAY8B3AEDCSw!&amp;rf=viewer_4">
+        
+      <br>之后，在“借方金额”列，将“贷方金额”列的数字的负数摘过来，如下图：<br>
+        <span class="lazyload-img-span">
+        <img data-src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/MV0*y5DGYjeS3jU6ku0omgH0RDD6XG7yHOntXl*DIdI!/b/dDYBAAAAAAAA&amp;bo=NgTPADYEzwADCSw!&amp;rf=viewer_4">
+        
+      <br>别忘了数值化<br>
+        <span class="lazyload-img-span">
+        <img data-src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/ZFEI6XadmHe.nIlSiNYlXlhdriR90jA4meuvOYSgp7s!/b/dDABAAAAAAAA&amp;bo=vwHiAL8B4gADCSw!&amp;rf=viewer_4">
+        
+      <br>之后，将处理过的表粘贴到一张新的工作簿上。我们可以给这张工作簿取名“dog”。粘贴之后，可以将“方向”列与“金额”列删掉，加上一列“科目”，便于之后的查找。如下图所示：<br>
+        <span class="lazyload-img-span">
+        <img data-src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/rZVrGnay43r*sbuyuylXG4GM3x7CziQW7He3K43GZrA!/b/dFMBAAAAAAAA&amp;bo=uANsAbgDbAEDCSw!&amp;rf=viewer_4">
+        
+      <br>贴完薪酬明细后，我们再处理成本费用下的“工资”明细。<br>如下图就是管理费用明细，把贷方发生额的明细筛掉，选择只包含借方的，同样粘贴到工作簿“dog”中<br>
+        <span class="lazyload-img-span">
+        <img data-src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/9TI08*1XabAFHCaxy2YI1MbWbrSdnrfyZgzcByJ1Ayg!/b/dFQBAAAAAAAA&amp;bo=OgQXAToEFwEDCSw!&amp;rf=viewer_4">
+        
+      <br>把所有成本费用的借方摘到“dog”后，我们就能得到这么一张表：<br>
+        <span class="lazyload-img-span">
+        <img data-src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/q41etiui8r0BZJxGA5rIQ2*6V*iUyTSuaQLv0RqYqq0!/b/dFQBAAAAAAAA&amp;bo=.gPjAvoD4wIDCSw!&amp;rf=viewer_4">
+        
+      <br>现在，关键的一步来了。我们可以将凭证的月、日、字、号等列连起来，这样每笔凭证就都有了自己独有的编码，不会和别的凭证重复。如下图：<br>
+        <span class="lazyload-img-span">
+        <img data-src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/U6cuPLGwdfHJXqG3eCIt0C1oW9G6LEabA0dFX6RUcqE!/b/dLYAAAAAAAAA&amp;bo=ygLBAMoCwQADCSw!&amp;rf=viewer_4">
+        
+      <br><strong>数值化</strong>后，我们就能得到最终的这么一张表（如下图）<br>
+        <span class="lazyload-img-span">
+        <img data-src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/aqU55SIl14*XxDDsT7HXAFki5*hnhQ0xP7UewXIOyg8!/b/dLYAAAAAAAAA&amp;bo=7AQNAuwEDQIDCSw!&amp;rf=viewer_4">
+        
+      <br>然后，将这张表透视，行选择我们之前给予每笔凭证的唯一编码，求和项选择“借方金额”。由于同一笔凭证的贷方计提工资数字我们用了负数，然后与借方的费用计提数加起来，应该是要等于0的。因为薪酬贷方=费用借方。而一笔凭证如果薪酬贷方≠成本费用借方的话，那么透视后就不会为0。透视结果如下图所示，求和项≠0的凭证，就是有问题的。而我们可以通过唯一编码快速定位问题凭证。<br>
+        <span class="lazyload-img-span">
+        <img data-src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/9trBPhmYbOXSzbjR2yAlf9wn9KAGdw2MTlxzxcj6Zxk!/b/dDEBAAAAAAAA&amp;bo=rgHoAK4B6AADCSw!&amp;rf=viewer_4">
+        
+      <br>因为之前我们加了一列“科目”列，通过搜索唯一编码，就能看到错误的凭证到底在那个科目下面，再去导账软件找就vans了。<br>
+        <span class="lazyload-img-span">
+        <img data-src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/YMPLM9EwsueIC4ee7sQ9FiWnLuaVnCGZ.4aSQU3GqVk!/b/dFMBAAAAAAAA&amp;bo=5gS3AuYEtwIDCSw!&amp;rf=viewer_4">
+        
+      <br>这样，我们就能够快速找到问题凭证，而不是去一笔一笔翻了。蟹蟹大噶！</span></span></span></span></span></span></span></span></span></span></span></p>
 
         <!-- 分类文章 -->
         
@@ -178,6 +234,10 @@
                 </a>
                 </li>
               
+              
+            
+            
+            
               
             
             

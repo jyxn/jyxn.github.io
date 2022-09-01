@@ -49,6 +49,12 @@
             </li>
           </a>
         
+          <a href="/tags" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              TAGS
+            </li>
+          </a>
+        
         
           <li class="menu-li animate__animated  animate__fadeInUp" id="sort">
              分类
@@ -95,6 +101,12 @@
       </div>
     </a>
   
+    <a href="/tags" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>TAGS</span>
+      </div>
+    </a>
+  
   
   </div>
 
@@ -127,10 +139,26 @@
 <li>数据处理</li>
 <li>曲线拟合</li>
 <li>correl函数运用</li>
-<li>标签说明<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2>在审计工作中，分析性程序的有效运用能够减少细节测试的范围，能够大大提高审计效率。且分析性程序在审计方法中具有形而上、宏观的特点，能够让我们在大方向上了解企业与行业，对于实施实质性程序也有个引导的作用。然而，许多分析性程序在数据与图表上得出的结论过于主观，且缺少统计原理的支撑。比如以销售费用与收入的波动为例，正常来说，运费的分月曲线应该与收入的分月曲线波动一致。如果是有运费跨月或者收入确认隔月确认的现象，则两条曲线有一个前后步伐的差，就如同正弦函数与余弦函数一样，趋势一样，步伐有前后差距。而不同于三角函数曲线的是，现实工作中的曲线，往往不会完全一致。到底长得多像，两条曲线才算拟合呢？恐怕每个审计员心里的标准都不一样。为了避免主观判断的影响，我们可以算出两条曲线的拟合程度。计算曲线的拟合程度，用得比较多的工具是origin，matlab也可以用。不过对于大部分审计员同事而言，excel是最顺手的工具。而excel中竟然也有一个函数能算曲线之间的拟合程度（没想到吧！），那就是correl函数。<h2 id="18年汇率趋势"><a href="#18年汇率趋势" class="headerlink" title="18年汇率趋势"></a>18年汇率趋势</h2>下面，我就以财务费用中的汇兑损益为例，讲解一下correl函数的具体用法。<br>在这之前，让我们先回去一下即将过去的这一年。<br>“从波罗的海的什切青到亚得里亚海边的里雅斯特，一幅横贯欧洲大陆的铁幕已经降落下来”。美国副总统彭斯在10月4日的演讲让我们看到了当年丘吉尔的演说的样子。贸易战纷争标志着中美两国正式走上了正面对抗的舞台。而随着美联储的多次加息，今年年初以来，美元对人民币大幅升值，人民币贬值趋势可以说是一泻千里。<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/bv*jkWWboag9LyOMae*ArM4wzUFfOdwR7S9htuHXXuY!/b/dFIBAAAAAAAA&amp;bo=vwMZAgAAAAADB4U!&amp;rf=viewer_4" alt="美元兑人民币汇率——来自新浪财经"><br>在汇率波动较大的年份下，如果一个公司以出口为主要销售方式，或以进口为主要购买方式，则汇率会对公司的财务费用产生巨大的影响。当然，许多企业能够未雨绸缪，通过期权或远期结售汇的形式将汇率波动风险对冲掉。但不是每个人都能够未卜先知。所以，在企业产生大额汇兑损益的时候，对汇兑损益进行审计分析就很有必要。</li>
+<li>标签说明<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2>在审计工作中，分析性程序的有效运用能够减少细节测试的范围，能够大大提高审计效率。且分析性程序在审计方法中具有形而上、宏观的特点，能够让我们在大方向上了解企业与行业，对于实施实质性程序也有个引导的作用。然而，许多分析性程序在数据与图表上得出的结论过于主观，且缺少统计原理的支撑。比如以销售费用与收入的波动为例，正常来说，运费的分月曲线应该与收入的分月曲线波动一致。如果是有运费跨月或者收入确认隔月确认的现象，则两条曲线有一个前后步伐的差，就如同正弦函数与余弦函数一样，趋势一样，步伐有前后差距。而不同于三角函数曲线的是，现实工作中的曲线，往往不会完全一致。到底长得多像，两条曲线才算拟合呢？恐怕每个审计员心里的标准都不一样。为了避免主观判断的影响，我们可以算出两条曲线的拟合程度。计算曲线的拟合程度，用得比较多的工具是origin，matlab也可以用。不过对于大部分审计员同事而言，excel是最顺手的工具。而excel中竟然也有一个函数能算曲线之间的拟合程度（没想到吧！），那就是correl函数。<h2 id="18年汇率趋势"><a href="#18年汇率趋势" class="headerlink" title="18年汇率趋势"></a>18年汇率趋势</h2>下面，我就以财务费用中的汇兑损益为例，讲解一下correl函数的具体用法。<br>在这之前，让我们先回去一下即将过去的这一年。<br>“从波罗的海的什切青到亚得里亚海边的里雅斯特，一幅横贯欧洲大陆的铁幕已经降落下来”。美国副总统彭斯在10月4日的演讲让我们看到了当年丘吉尔的演说的样子。贸易战纷争标志着中美两国正式走上了正面对抗的舞台。而随着美联储的多次加息，今年年初以来，美元对人民币大幅升值，人民币贬值趋势可以说是一泻千里。<br>
+        <span class="lazyload-img-span">
+        <img data-src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/bv*jkWWboag9LyOMae*ArM4wzUFfOdwR7S9htuHXXuY!/b/dFIBAAAAAAAA&amp;bo=vwMZAgAAAAADB4U!&amp;rf=viewer_4">
+        
+      <br>在汇率波动较大的年份下，如果一个公司以出口为主要销售方式，或以进口为主要购买方式，则汇率会对公司的财务费用产生巨大的影响。当然，许多企业能够未雨绸缪，通过期权或远期结售汇的形式将汇率波动风险对冲掉。但不是每个人都能够未卜先知。所以，在企业产生大额汇兑损益的时候，对汇兑损益进行审计分析就很有必要。</span></li>
 </ul>
-<h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><p>在会计实务中，企业往往会在每个月月末，计算以外币为原币计量的资产或负债产生的汇兑损益。假设ABC公司是中国境内一家产品主要出口到美国的企业，且应收账款（美元）在每个月份之间的波动不大。那么ABC公司的汇兑损益主要就与美元兑人民币汇率相关。在每个月月末，企业会根据汇率较上个月月末的变动，确认汇兑损益。从数学的语言上说，就是汇率是fx的话，那么汇兑损益就相当于与fx的导函数相关。所以，对于汇率，我们选取其导函数，对于汇兑损益，我们选取其本身。<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/DbrFvcGSV0jC91RnFVboAW0aS*OURRIMNPjg1*9Nf44!/b/dC4BAAAAAAAA&amp;bo=6QHAAekBwAEDCSw!&amp;rf=viewer_4" alt="美元兑人民币汇率变动中间价——来自央行"><br>通过数据处理后，我们得到下面两个图。（ABC公司的汇兑损益是我看着汇率编的，你别说，编的还真像那么会事儿。）<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/QvdYYaE9yMP8qae84qN*okHhzV5ntjL6MbTaSbD4pHA!/b/dDMBAAAAAAAA&amp;bo=xgJhAsYCYQIDCSw!&amp;rf=viewer_4" alt="汇率与汇兑损益的对比"><br>这里提醒一下，汇率上升，人民币贬值，美元应收升值，企业获益，财务费用是负数，所以对汇兑损益我加了个负号，就是以横坐标为轴，进行轴对称变化。<br>好了，现在这两个图咋一看，长得还挺像。但是具体有多像呢？说不出来，反正很像就是了（嘻嘻）。这时候，为了度量曲线的拟合程度，correl函数就登场了。</p>
-<h2 id="correl函数运用"><a href="#correl函数运用" class="headerlink" title="correl函数运用"></a>correl函数运用</h2><p>correl函数是计算相关系数的。函数逻辑非常简单，把两条曲线的数值分别选中就好了。甚至可以不在汇兑损益加负数，因为负相关也是相关。<br><img src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/vnIGuHX5w8.KNpHUmtyJn35I3b39tG1tLLHwUxMWq64!/b/dFQBAAAAAAAA&amp;bo=hwPYAQAAAAADB38!&amp;rf=viewer_4" alt="correl函数"><br>根据计算结果，我们能够看到，拟合程度为0.969。一般而言，在0.9以上我们就可以认定两条曲线拟合了。有了这个相关系数的佐证，我们现在就能够大胆地、有底气地说出，企业计提的汇兑损益与汇率波动是正相关的！</p>
+<h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><p>在会计实务中，企业往往会在每个月月末，计算以外币为原币计量的资产或负债产生的汇兑损益。假设ABC公司是中国境内一家产品主要出口到美国的企业，且应收账款（美元）在每个月份之间的波动不大。那么ABC公司的汇兑损益主要就与美元兑人民币汇率相关。在每个月月末，企业会根据汇率较上个月月末的变动，确认汇兑损益。从数学的语言上说，就是汇率是fx的话，那么汇兑损益就相当于与fx的导函数相关。所以，对于汇率，我们选取其导函数，对于汇兑损益，我们选取其本身。<br>
+        <span class="lazyload-img-span">
+        <img data-src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/DbrFvcGSV0jC91RnFVboAW0aS*OURRIMNPjg1*9Nf44!/b/dC4BAAAAAAAA&amp;bo=6QHAAekBwAEDCSw!&amp;rf=viewer_4">
+        
+      <br>通过数据处理后，我们得到下面两个图。（ABC公司的汇兑损益是我看着汇率编的，你别说，编的还真像那么会事儿。）<br>
+        <span class="lazyload-img-span">
+        <img data-src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/QvdYYaE9yMP8qae84qN*okHhzV5ntjL6MbTaSbD4pHA!/b/dDMBAAAAAAAA&amp;bo=xgJhAsYCYQIDCSw!&amp;rf=viewer_4">
+        
+      <br>这里提醒一下，汇率上升，人民币贬值，美元应收升值，企业获益，财务费用是负数，所以对汇兑损益我加了个负号，就是以横坐标为轴，进行轴对称变化。<br>好了，现在这两个图咋一看，长得还挺像。但是具体有多像呢？说不出来，反正很像就是了（嘻嘻）。这时候，为了度量曲线的拟合程度，correl函数就登场了。</span></span></p>
+<h2 id="correl函数运用"><a href="#correl函数运用" class="headerlink" title="correl函数运用"></a>correl函数运用</h2><p>correl函数是计算相关系数的。函数逻辑非常简单，把两条曲线的数值分别选中就好了。甚至可以不在汇兑损益加负数，因为负相关也是相关。<br>
+        <span class="lazyload-img-span">
+        <img data-src="http://m.qpic.cn/psb?/V14QvVIq0mRGxg/vnIGuHX5w8.KNpHUmtyJn35I3b39tG1tLLHwUxMWq64!/b/dFQBAAAAAAAA&amp;bo=hwPYAQAAAAADB38!&amp;rf=viewer_4">
+        
+      <br>根据计算结果，我们能够看到，拟合程度为0.969。一般而言，在0.9以上我们就可以认定两条曲线拟合了。有了这个相关系数的佐证，我们现在就能够大胆地、有底气地说出，企业计提的汇兑损益与汇率波动是正相关的！</span></p>
 <h2 id="标签说明"><a href="#标签说明" class="headerlink" title="标签说明"></a>标签说明</h2><p>这篇文章的标签是datawhisper。大家可能听过wind whisper，风语者，horse whisper，马语者，那datawhisper翻译过来就是数语者（很酷炫对吧）。由于自己本身比较喜欢数字与各种工具，想着怎么把这些工具与想法在工作中能够运用，就开设了这个专栏。我的口号是，当不了最骚的审计员，就努力当最geek的审计员XD</p>
 
         <!-- 分类文章 -->
@@ -182,6 +210,10 @@
                 </a>
                 </li>
               
+              
+            
+            
+            
               
             
             
